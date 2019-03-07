@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 import { fetchFriends} from './actions/actions';
+import { addFriend } from './actions/actions';
 
 
 
@@ -11,9 +12,11 @@ class Friends extends React.Component {
     constructor(){
         super();
         this.state={
-            name:'',
-            age:'',
-            email:'',
+            newFriend: {
+                name:'',
+                age:'',
+                email:'',
+            }
         }
     }
     componentDidMount(){
@@ -21,8 +24,14 @@ class Friends extends React.Component {
     }
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            newFriend: {
+                ...this.state.newFriend,
+                [e.target.name]: e.target.value
+            }
         })
+    }
+    addFriend = e => {
+        this.props.addFriend(this.state.newFriend)
     }
     render(){
         return (
@@ -87,6 +96,7 @@ export default withRouter(connect(
     mapStateToProps,
     {
      fetchFriends,   
+     addFriend,
     }
 
 )(Friends));
