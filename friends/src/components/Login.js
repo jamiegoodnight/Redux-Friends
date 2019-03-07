@@ -15,7 +15,11 @@ class Login extends React.Component {
     }
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            credentials: {
+                ...this.state.credentials,
+                [e.target.name]: e.target.value
+            }
+          
         })
     }
     login = e => {
@@ -31,14 +35,14 @@ class Login extends React.Component {
                     <input 
                     type="string" 
                     name="username" 
-                    value={this.state.username}
+                    value={this.state.credentials.username}
                     placeholder="username"
                     onChange={this.handleChange}
                     />
                     <input 
                     type="password" 
                     name="password" 
-                    value={this.state.password}
+                    value={this.state.credentials.password}
                     placeholder="password"
                     onChange={this.handleChange}
                     />

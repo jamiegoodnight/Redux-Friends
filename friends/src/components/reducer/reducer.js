@@ -21,7 +21,7 @@ import {
       case FETCH_FRIENDS_SUCCESS:
       return {
         ...state,
-        characters: [...state.friends, ...action.payload],
+        friends: [...state.friends, ...action.payload],
         loading: false,
         error: null
       }

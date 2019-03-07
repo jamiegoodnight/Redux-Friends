@@ -2,19 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import { fetchFriends } from './actions/actions';
+import { fetchFriends} from './actions/actions';
 
 
 
 
 class Friends extends React.Component {
-    state={
-        name:'',
-        age:'',
-        email:'',
-            
+    constructor(){
+        super();
+        this.state={
+            name:'',
+            age:'',
+            email:'',
+        }
     }
-    
     componentDidMount(){
         this.props.fetchFriends()
     }
@@ -76,7 +77,7 @@ class Friends extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    friends: [],
+    friends: state.friends,
     loading: state.loading,
     error: state.error
 })
